@@ -1,0 +1,11 @@
+{% extends "admin/change_form.html" %}
+
+{% block submit_buttons_bottom %}
+    {{ block.super }}
+    <form method="post" action="{% url 'intermediate_save_order' original.pk %}">
+        {% csrf_token %}
+        <input type="hidden" name="doctor" value="{{ original.doctor_id }}">
+        <input type="hidden" name="lucrare" value="{{ original.lucrare_id }}">
+        <input type="submit" value="Load Related Data" class="default">
+    </form>
+{% endblock %}

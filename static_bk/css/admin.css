@@ -1,0 +1,11 @@
+/* static/myapp/css/admin.css */
+
+#header, .module caption, .button {
+    background: #yourColor; /* Replace with your color */
+}
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited {
+    color: #yourColor; /* Replace with your color */
+}
+
+/* You can add more custom styles here */

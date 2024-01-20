@@ -1,0 +1,29 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Site Title{% endblock title %}</title>
+    {% block extrahead %}{% endblock extrahead %}
+    <!-- Add links to CSS files here -->
+</head>
+<body>
+    <header>
+        <!-- Navigation bar, logo, etc. -->
+    </header>
+    
+    <main>
+        {% block content %}
+        <!-- This block will be overridden by child templates. -->
+        {% endblock content %}
+    </main>
+    
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+    
+    {% block extrajs %}{% endblock extrajs %}
+    <!-- Add links to JavaScript files here -->
+</body>
+</html>

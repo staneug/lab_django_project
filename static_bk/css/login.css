@@ -1,0 +1,94 @@
+/* Apply a linear gradient to the body background using colors from the logo */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(160deg, #0a0f0d 0%, #192a27 100%);
+    color: #e1e8e3;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center; /* Aligns the login container vertically */
+    justify-content: center; /* Aligns the login container horizontally */
+}
+
+.login-container {
+    width: 340px;
+    padding: 2rem;
+    background: rgba(10, 15, 13, 0.85); /* Semi-transparent background */
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid #cddc39; /* Border color from the logo */
+}
+
+h2 {
+    text-align: center;
+    color: #cddc39; /* Yellow-green color from the logo for the 'Login' text */
+    margin-bottom: 1.5rem;
+}
+
+
+.btn {
+    display: block; /* Makes the button a block-level element */
+    width: 50%; /* Adjust the width as needed */
+    padding: 0.75rem;
+    margin-top: 1rem;
+    margin-left: auto; /* Centers the button */
+    margin-right: auto; /* Centers the button */
+    font-size: 1.1em; /* Larger font size for the button text */
+    border: none;
+    background: #cddc39; /* Button color */
+    color: #0a0f0d; /* Text color */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #9ea831; /* A darker shade for hover effect */
+}
+
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #cddc39;
+    background: #0a0f0d;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+.login-form input[type="submit"] {
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border: none;
+    background: #cddc39;
+    color: #0a0f0d;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.login-form input[type="submit"]:hover {
+    background-color: #9ea831;
+}
+
+.reset-link {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: #cddc39;
+    text-decoration: none;
+}
+
+.reset-link:hover {
+    text-decoration: underline;
+}

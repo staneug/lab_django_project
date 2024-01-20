@@ -1,0 +1,61 @@
+{% extends "admin/change_form.html" %}
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript">
+        // JavaScript to update clinics and options fields
+		
+		
+        document.addEventListener('DOMContentLoaded', function() {
+            const doctorSelect = document.querySelector('#id_doctor');
+            const clinicSelect = document.querySelector('#id_clinica');
+            const productSelect = document.querySelector('#id_lucrare');
+            const optionsSelect = document.querySelector('#id_optiuni');
+
+            function updateClinics() {
+                const doctorId = doctorSelect.value;
+                fetch(`/ajax/load-clinics/?doctor_id=${doctorId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        clinicSelect.innerHTML = '';
+                        data.forEach(function(clinic) {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = clinic.id;
+                            optionElement.text = clinic.name;
+                            clinicSelect.appendChild(optionElement);
+                        });
+                    });
+            }
+
+            function updateOptions() {
+                const productId = productSelect.value;
+                fetch(`/ajax/load-options/?product_id=${productId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        optionsSelect.innerHTML = '';
+                        data.forEach(function(option) {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = option.id;
+                            optionElement.text = option.name;
+                            optionsSelect.appendChild(optionElement);
+                        });
+                    });
+            }
+
+            if (doctorSelect) {
+                doctorSelect.addEventListener('change', updateClinics);
+            }
+
+            if (productSelect) {
+                productSelect.addEventListener('change', updateOptions);
+            }
+
+            // Initial load
+            if (doctorSelect && clinicSelect.options.length === 0) {
+                updateClinics();
+            }
+            if (productSelect && optionsSelect.options.length === 0) {
+                updateOptions();
+            }
+        });
+    </script>
+{% endblock %}

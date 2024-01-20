@@ -1,0 +1,75 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="body flex-grow-1 px-3">
+  <div class="container-lg">
+    <div class="card mb-4">
+      <div class="card-header"><strong>Orders Table</strong><span class="small ms-1">Details</span></div>
+      <div class="card-body">
+        <p class="text-medium-emphasis small">Details of orders processed</p>
+        <div class="tab-content rounded-bottom">
+          <div class="tab-pane p-3 active preview" role="tabpanel">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Nume pacient</th>
+                  <th scope="col">Clinica</th>
+                  <th scope="col">Lucrare</th>
+				  <th scope="col">Optiuni</th>
+                  <th scope="col">Data intrare</th>
+                  <th scope="col">Termen</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-body">
+                <!-- Table rows with data will go here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $.ajax({
+      url: 'http://localhost:8000/api/orders',  // Replace with your API endpoint
+      method: 'GET',
+      success: function(data) {
+        data.forEach(function(order) {
+          $('#orders-table-body').append(`
+            <tr>
+              <td>${order.nume_pacient}</td>
+              <td>${order.clinica.company_full_name}</td>  // Use 'company_full_name' of clinica
+              <td>${order.lucrare.name}</td>  // Use 'name' of lucrare
+              <td>${order.optiuni_names}</td>  // Use the 'optiuni_names' field for options
+              <td>${order.data_intrare}</td>
+              <td>${order.termen}</td>
+              <td>${order.status}</td>
+            </tr>
+          `);
+        });
+      },
+      error: function(error) {
+        console.error("Error fetching data: ", error);
+        // Handle errors here
+      }
+    });
+  });
+</script>
+
+
+{% endblock javascripts %}
